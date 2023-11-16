@@ -35,7 +35,6 @@ public class DuplicateFilesRemover {
 					} else {
 						hashes1.add(hash1);
 						hashes2.add(hash2);
-						System.out.println("Hash Added : " + obj.getName());
 					}
 				} catch (Exception e) {
 					System.out.println("Problem while calculating hash of - " + obj.getAbsolutePath().replace(path, ""));

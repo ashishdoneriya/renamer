@@ -1,10 +1,7 @@
 package com.csetutorials;
 
 import com.csetutorials.beans.Arguments;
-import com.csetutorials.services.ArgumentsParser;
-import com.csetutorials.services.DuplicateFilesRemover;
-import com.csetutorials.services.LastModifiedUpdater;
-import com.csetutorials.services.MediaRenamer;
+import com.csetutorials.services.*;
 
 public class Main {
 
@@ -30,6 +27,9 @@ public class Main {
 			LastModifiedUpdater.updateLastModified(arguments.sourceDir);
 		}
 		if (arguments.moveFiles) {
+			FileUtils.moveFiles(arguments.sourceDir);
+		}
+		if (arguments.removeDuplicates) {
 			DuplicateFilesRemover.removeDuplicates(arguments.sourceDir);
 		}
 	}
