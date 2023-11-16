@@ -29,6 +29,9 @@ public class ArgumentsParser {
 				case "--use-last-modified":
 					arguments.useLastModified = true;
 					break;
+				case "--use-file-name":
+					arguments.useFileName = true;
+					break;
 			}
 		}
 

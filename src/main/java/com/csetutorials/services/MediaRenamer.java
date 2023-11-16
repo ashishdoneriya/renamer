@@ -43,12 +43,13 @@ public class MediaRenamer {
 			return;
 		}
 		Pattern[] mediaPatterns = {
+				Pattern.compile("Screenshot_(\\d{4})-(\\d{2})-(\\d{2})-(\\d{2})-(\\d{2})-(\\d{2}).+\\.(jpg|jpeg|webp|png|avif|gif)" ),
 				Pattern.compile("IMG_(\\d{4})(\\d{2})(\\d{2})_(\\d{2})(\\d{2})(\\d{2})\\.(jpg|jpeg|webp|png|avif|gif)",
 						Pattern.CASE_INSENSITIVE),
 				Pattern.compile("IMG_(\\d{4})(\\d{2})(\\d{2})_(\\d{2})(\\d{2})(\\d{2})~\\d\\.(jpg|jpeg|webp|png|avif|gif)",
 						Pattern.CASE_INSENSITIVE),
-				Pattern.compile("VID_(\\d{4})(\\d{2})(\\d{2})_(\\d{2})(\\d{2})(\\d{2}).(mp4|MP4)"),
-				Pattern.compile("VID_(\\d{4})(\\d{2})(\\d{2})_(\\d{2})(\\d{2})(\\d{2})_HSR_\\d{3}.(mp4|MP4)")
+				Pattern.compile("VID_(\\d{4})(\\d{2})(\\d{2})_(\\d{2})(\\d{2})(\\d{2})\\.(mp4|MP4)"),
+				Pattern.compile("VID_(\\d{4})(\\d{2})(\\d{2})_(\\d{2})(\\d{2})(\\d{2})_HSR_\\d{3}\\.(mp4|MP4)")
 		};
 		for (File file : files) {
 			String extension = FileUtils.getExtension(file.getName());
