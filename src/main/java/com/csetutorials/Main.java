@@ -28,6 +28,7 @@ public class Main {
 		}
 		if (arguments.moveFiles) {
 			FileUtils.moveFiles(arguments.sourceDir);
+			FileUtils.moveWhatsappFiles(arguments.sourceDir);
 		}
 		if (arguments.removeDuplicates) {
 			DuplicateFilesRemover.removeDuplicates(arguments.sourceDir);

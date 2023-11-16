@@ -1,6 +1,7 @@
 package com.csetutorials.services;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,4 +50,34 @@ public class FileUtils {
 		}
 	}
 
+	public static void moveWhatsappFiles(String sourceDir) {
+		File dir = new File(sourceDir);
+		File[] files = dir.listFiles();
+		if (files == null) {
+			return;
+		}
+		Pattern pattern = Pattern.compile("(?:IMG|VID)-(\\d{4})(\\d{2})\\d{2}-WA\\d{4}\\.(png|jpg|jpeg|mp4|webp|gif|mkv)");
+		for (File file : files) {
+			Matcher matcher = pattern.matcher(file.getName());
+			if (matcher.find()) {
+				String parentPath = file.getParentFile().getAbsolutePath() + File.separator
+						+ matcher.group(1) + File.separator + matcher.group(2);
+				(new File(parentPath)).mkdirs();
+				File newFile = new File(parentPath + File.separator + file.getName());
+				if (newFile.exists()) {
+					String extension = matcher.group(3);
+					for (int i = 0; i < 1_00_000; i++) {
+						newFile = new File(parentPath + File.separator
+								+ file.getName().replace("." + extension, "-" + i + "." + extension));
+						if (!newFile.exists()) {
+							file.renameTo(newFile);
+							break;
+						}
+					}
+				} else {
+					file.renameTo(newFile);
+				}
+			}
+		}
+	}
 }

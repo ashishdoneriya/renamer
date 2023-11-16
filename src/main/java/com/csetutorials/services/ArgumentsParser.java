@@ -28,6 +28,7 @@ public class ArgumentsParser {
 					break;
 				case "--use-last-modified":
 					arguments.useLastModified = true;
+					break;
 			}
 		}
 
