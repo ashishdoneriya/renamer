@@ -19,8 +19,6 @@ public class MediaRenamer {
 
 	private static final SimpleDateFormat finalSdf = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
 
-	private static final SimpleDateFormat imageMetaDataSdf = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
-
 	public static void renameUsingLastModified(Arguments arguments) {
 		File dir = new File(arguments.sourceDir);
 		File[] files = dir.listFiles();
@@ -100,9 +98,10 @@ public class MediaRenamer {
 		try {
 			metadata = ImageMetadataReader.readMetadata(file);
 		} catch (Exception e) {
-			System.out.println("Skipped : " + file.getName());
+			System.out.println("Problem while reading metadata : " + file.getName());
 			return null;
 		}
+		SimpleDateFormat imageMetaDataSdf = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss");
 		for (Directory directory: metadata.getDirectories()) {
 			for (Tag tag: directory.getTags()) {
 				if ("Date/Time".equals(tag.getTagName())) {
@@ -115,6 +114,7 @@ public class MediaRenamer {
 				}
 			}
 		}
+
 		return null;
 	}
 

@@ -26,17 +26,21 @@ public class ArgumentsParser {
 				case "--use-meta":
 					arguments.useMeta = true;
 					break;
+				case "--use-last-modified":
+					arguments.useLastModified = true;
 			}
 		}
 
-		if (!arguments.renameImages && !arguments.renameVideos && !arguments.moveFiles && !arguments.updateLastModified) {
+		if (!arguments.renameImages && !arguments.renameVideos
+				&& !arguments.moveFiles && !arguments.updateLastModified
+				&& !arguments.removeDuplicates) {
 			System.out.println(
 					"Kindly use at least one argument from below" +
 							"\n\t--rename-videos" +
 							"\n\t--rename-images" +
 							"\n\t--move-files" +
 							"\n\t--update-last-modified" +
-							"\n\t --remove-duplicates" +
+							"\n\t--remove-duplicates" +
 							"\nUse --help for more options.");
 			System.exit(0);
 		}
