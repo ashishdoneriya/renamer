@@ -15,7 +15,7 @@ public class Main {
 				MediaRenamer.renameUsingLastModified(arguments);
 			} else if (arguments.useFileName) {
 				MediaRenamer.renameUsingFileName(arguments);
-			} else if (arguments.useImageProperties) {
+			} else if (arguments.useMeta) {
 				MediaRenamer.renameUsingImageProperties(arguments);
 			}
 		}

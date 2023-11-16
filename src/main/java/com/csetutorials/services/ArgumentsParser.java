@@ -23,6 +23,9 @@ public class ArgumentsParser {
 				case "--remove-duplicates":
 					arguments.removeDuplicates = true;
 					break;
+				case "--use-meta":
+					arguments.useMeta = true;
+					break;
 			}
 		}
 
@@ -53,14 +56,14 @@ public class ArgumentsParser {
 		if (arguments.renameImages) {
 			int count = 0;
 			count += arguments.useLastModified ? 1 : 0;
-			count += arguments.useImageProperties ? 1 : 0;
+			count += arguments.useMeta ? 1 : 0;
 			count += arguments.useFileName ? 1 : 0;
 			if (count == 0) {
-				System.out.println("Kindly use --use-image-properties or --use-last-modified or --use-file-name along with --rename-images");
+				System.out.println("Kindly use --use-meta or --use-last-modified or --use-file-name along with --rename-images");
 				System.exit(0);
 			}
 			if (count > 1) {
-				System.out.println("Kindly use exactly one from --use-image-properties or --use-last-modified or --use-file-name along with --rename-images");
+				System.out.println("Kindly use exactly one from --use-meta or --use-last-modified or --use-file-name along with --rename-images");
 				System.exit(0);
 			}
 		}

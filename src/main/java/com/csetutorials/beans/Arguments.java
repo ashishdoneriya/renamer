@@ -11,7 +11,7 @@ public class Arguments {
 	public boolean renameVideos;
 	public boolean useFileName;
 	public boolean useLastModified;
-	public boolean useImageProperties;
+	public boolean useMeta;
 	public boolean moveFiles;
 	public boolean updateLastModified;
 	public boolean removeDuplicates;
