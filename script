@@ -1,0 +1,3 @@
+function renamer() {
+	java -jar /home/ashish/Projects/Renamer/target/renamer.jar "$@"
+}
