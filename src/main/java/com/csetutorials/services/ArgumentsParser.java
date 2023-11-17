@@ -32,12 +32,18 @@ public class ArgumentsParser {
 				case "--use-file-name":
 					arguments.useFileName = true;
 					break;
+				case "--merge":
+					arguments.merge = true;
+					break;
+				case "--merge-remove-duplicates":
+					arguments.merge = true;
+					arguments.removeDuplicates = true;
 			}
 		}
 
 		if (!arguments.renameImages && !arguments.renameVideos
 				&& !arguments.moveFiles && !arguments.updateLastModified
-				&& !arguments.removeDuplicates) {
+				&& !arguments.removeDuplicates && !arguments.merge) {
 			System.out.println(
 					"Kindly use at least one argument from below" +
 							"\n\t--rename-videos" +
@@ -45,6 +51,8 @@ public class ArgumentsParser {
 							"\n\t--move-files" +
 							"\n\t--update-last-modified" +
 							"\n\t--remove-duplicates" +
+							"\n\t--merge" +
+							"\n\t--merge-remove-duplicates" +
 							"\nUse --help for more options.");
 			System.exit(0);
 		}
@@ -74,6 +82,18 @@ public class ArgumentsParser {
 				System.out.println("Kindly use exactly one from --use-meta or --use-last-modified or --use-file-name along with --rename-images");
 				System.exit(0);
 			}
+		}
+
+		if (arguments.merge) {
+			if (args.length == 1) {
+				System.out.println("Kindly pass a directory path");
+				System.exit(0);
+			}
+	/*		StringBuilder sb = new StringBuilder(args[1]);
+			for (int i = 2; i < args.length; i++) {
+				sb.append(" ").append(args[i]);
+			}
+			arguments.mergeDir = sb.toString(); */
 		}
 
 		return arguments;

@@ -2,6 +2,7 @@ package com.csetutorials.beans;
 
 
 import java.io.File;
+import java.util.List;
 
 public class Arguments {
 
@@ -15,5 +16,7 @@ public class Arguments {
 	public boolean moveFiles;
 	public boolean updateLastModified;
 	public boolean removeDuplicates;
+	public boolean merge;
+	public String mergeDir;
 
 }

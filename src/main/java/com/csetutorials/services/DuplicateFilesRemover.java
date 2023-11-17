@@ -11,9 +11,11 @@ import java.util.Set;
 import java.util.Stack;
 
 public class DuplicateFilesRemover {
-	public static void removeDuplicates(String path) {
+	public static void removeDuplicates(String... paths) {
 		Stack<File> stack = new Stack<>();
-		stack.push(new File(path));
+		for (String path: paths) {
+			stack.push(new File(path));
+		}
 		Set<String> hashes1 = new HashSet<>();
 		Set<String> hashes2 = new HashSet<>();
 		while (!stack.isEmpty()) {
@@ -37,7 +39,7 @@ public class DuplicateFilesRemover {
 						hashes2.add(hash2);
 					}
 				} catch (Exception e) {
-					System.out.println("Problem while calculating hash of - " + obj.getAbsolutePath().replace(path, ""));
+					System.out.println("Problem while calculating hash of - " + obj.getAbsolutePath());
 				}
 			}
 		}

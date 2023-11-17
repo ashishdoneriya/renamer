@@ -33,5 +33,11 @@ public class Main {
 		if (arguments.removeDuplicates) {
 			DuplicateFilesRemover.removeDuplicates(arguments.sourceDir);
 		}
+		if (arguments.merge) {
+			if (arguments.removeDuplicates) {
+				DuplicateFilesRemover.removeDuplicates(arguments.sourceDir, arguments.mergeDir);
+			}
+			FileUtils.mergeDirectories(arguments.sourceDir, arguments.mergeDir);
+		}
 	}
 }
