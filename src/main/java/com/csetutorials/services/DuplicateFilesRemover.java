@@ -45,13 +45,13 @@ public class DuplicateFilesRemover {
 		}
 	}
 
-	private static String getHash1(File obj) throws NoSuchAlgorithmException, IOException {
+	public static String getHash1(File obj) throws NoSuchAlgorithmException, IOException {
 		byte[] data = Files.readAllBytes(obj.toPath());
 		byte[] hash = MessageDigest.getInstance("MD5").digest(data);
 		return new BigInteger(1, hash).toString(16);
 	}
 
-	private static String getHash2(File obj) throws NoSuchAlgorithmException, IOException {
+	public static String getHash2(File obj) throws NoSuchAlgorithmException, IOException {
 		byte[] data = Files.readAllBytes(obj.toPath());
 		byte[] hash = MessageDigest.getInstance("SHA-256").digest(data);
 		return new BigInteger(1, hash).toString(16);

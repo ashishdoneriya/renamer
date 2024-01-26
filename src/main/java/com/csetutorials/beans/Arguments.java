@@ -18,5 +18,8 @@ public class Arguments {
 	public boolean removeDuplicates;
 	public boolean merge;
 	public String mergeDir;
+	public boolean renameAndMove;
+	public boolean renameAndMoveWhatsApp;
+	public boolean cleanEmptyDirs;
 
 }

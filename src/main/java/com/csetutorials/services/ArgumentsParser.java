@@ -38,12 +38,24 @@ public class ArgumentsParser {
 				case "--merge-remove-duplicates":
 					arguments.merge = true;
 					arguments.removeDuplicates = true;
+					break;
+				case "--rename-and-move":
+					arguments.renameAndMove = true;
+					break;
+				case "--rename-and-move-whatsapp":
+					arguments.renameAndMoveWhatsApp = true;
+					break;
+				case "--clean":
+					arguments.cleanEmptyDirs = true;
+					break;
 			}
 		}
 
 		if (!arguments.renameImages && !arguments.renameVideos
 				&& !arguments.moveFiles && !arguments.updateLastModified
-				&& !arguments.removeDuplicates && !arguments.merge) {
+				&& !arguments.removeDuplicates && !arguments.merge
+				&& !arguments.renameAndMove && !arguments.cleanEmptyDirs
+				&& !arguments.renameAndMoveWhatsApp) {
 			System.out.println(
 					"Kindly use at least one argument from below" +
 							"\n\t--rename-videos" +
@@ -53,6 +65,9 @@ public class ArgumentsParser {
 							"\n\t--remove-duplicates" +
 							"\n\t--merge" +
 							"\n\t--merge-remove-duplicates" +
+							"\n\t--rename-and-move" +
+							"\n\t--rename-and-move-whatsapp" +
+							"\n\t--clean" +
 							"\nUse --help for more options.");
 			System.exit(0);
 		}
@@ -84,16 +99,16 @@ public class ArgumentsParser {
 			}
 		}
 
-		if (arguments.merge) {
+		if (arguments.merge || arguments.renameAndMove || arguments.renameAndMoveWhatsApp) {
 			if (args.length == 1) {
 				System.out.println("Kindly pass a directory path");
 				System.exit(0);
 			}
-	/*		StringBuilder sb = new StringBuilder(args[1]);
+			StringBuilder sb = new StringBuilder(args[1]);
 			for (int i = 2; i < args.length; i++) {
 				sb.append(" ").append(args[i]);
 			}
-			arguments.mergeDir = sb.toString(); */
+			arguments.mergeDir = sb.toString();
 		}
 
 		return arguments;

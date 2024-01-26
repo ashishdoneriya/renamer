@@ -39,5 +39,17 @@ public class Main {
 			}
 			FileUtils.mergeDirectories(arguments.sourceDir, arguments.mergeDir);
 		}
+		if (arguments.renameAndMove) {
+			FileUtils.renameAndMove(arguments.mergeDir, arguments.sourceDir);
+			FileUtils.clean(new java.io.File(arguments.mergeDir));
+		}
+		if (arguments.renameAndMoveWhatsApp) {
+			DuplicateFilesRemover.removeDuplicates(arguments.sourceDir, arguments.mergeDir);
+			FileUtils.renameAndMoveWhatsApp(arguments.mergeDir, arguments.sourceDir);
+			FileUtils.clean(new java.io.File(arguments.mergeDir));
+		}
+		if (arguments.cleanEmptyDirs) {
+			FileUtils.clean(new java.io.File(arguments.sourceDir));
+		}
 	}
 }

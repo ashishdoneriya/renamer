@@ -94,7 +94,7 @@ public class MediaRenamer {
 		}
 	}
 
-	private static Date extractMetadata(File file) {
+	public static Date extractMetadata(File file) {
 		Metadata metadata;
 		try {
 			metadata = ImageMetadataReader.readMetadata(file);
@@ -133,6 +133,9 @@ public class MediaRenamer {
 			case "avif":
 			case "mp4":
 			case "mkv":
+			case "mov":
+			case "avi":
+			case "3gp":
 				return false;
 			default:
 				return true;
